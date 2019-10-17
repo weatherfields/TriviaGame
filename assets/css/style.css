@@ -1,0 +1,49 @@
+@font-face {
+    font-family: junction-regular;
+    src: url("../fonts/junction-regular.woff") format("woff"), url("../fonts/junction-regular.ttf")  format("truetype");
+}
+@font-face {
+    font-family: junction-bold;
+    src: url("../fonts/junction-bold.woff") format("woff"), url("../fonts/junction-bold.ttf")  format("truetype");
+}
+@font-face {
+    font-family: LANSBURY;
+    src: url("../fonts/LANSBURY.TTF")  format("truetype");
+}
+h1 {
+    font-size: 1.6em;
+    font-family: LANSBURY, Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+#startbtn {
+    text-align: center;
+    /* background-color: brown; */
+}
+.btn-primary {
+    color:rgb(250, 233, 198);
+    background-color:#FF6501;
+    border-color: #FF6501;
+}
+body {
+    /* margin-top: 10px; */
+    background-image: url(../images/Albums.jpg);
+    background-size: cover;
+    background-repeat: inherit;
+    background-color: black;
+  }
+.container {
+    /* background-image: linear-gradient(to bottom right, rgb(235, 141, 18), #38c093); */
+    margin-top: 12px;
+    /* background-color: #fffffb; */
+    /* box-shadow: 0px 0px 9px 3px #9e9c9c; */
+    max-width: 500px;
+    max-height: 550px;
+    color: rgb(250, 233, 198);
+	text-align: center;
+	background-color:#581800;
+	border: 8pt double rgb(250, 233, 198);
+	border-radius: 20pt;
+}
+#empty {
+    height: 20px;
+}
