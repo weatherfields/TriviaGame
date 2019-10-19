@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+let questionSet = 0;
 // Questions 
 const questions=[{
     name:"questionOne",
@@ -63,18 +63,59 @@ const questions=[{
 
 function showQuestions(){
 
-    var rando = Math.floor(Math.random() * 5 + 1)
+    let rando = Math.floor(Math.random() * 5 + 1)
     
-    var questionContainer = $('#questions');
-    var questionDiv = $('<div>');
+    let questionContainer = $('#questions');
+    let questionDiv = $('<div>');
     questionDiv.attr('id', questions[rando].name);
    
     questionDiv.text(questions[rando].prompt);
-    // questionDiv.css('border','solid 2px red');
-    // questionDiv.css('display','block');
-    // questionDiv.css('box-sizing','border-box');
-    // questionDiv.css('height','100px');
     questionContainer.append(questionDiv);
+
+
+
+    const questionAnswers = $('#allanswers');
+    for (i = 0; i < 4; i++) {
+        const currentQuestion = $('<div>' + questions[questionSet].ansOptions[i] + '</div>');
+
+        // need to add class to take advantage of bootstrap
+        // currentQuestion.addClass('data-mask flex-center', i);
+        currentQuestion.addClass("questionCurrent");
+        currentQuestion.addClass("hoverdiv");
+        questionAnswers.append(currentQuestion);
+
+
+}
+// Start The Game //
+$(".st-btn").click(function startGame() {
+
+    startTimer();
+
+    showQuestions();
+    //$("#questions").css('display', 'inherit');
+    $(".st-btn").remove();
+
+    
+});
+
+function startTimer() {
+        
+    let timer = 12;
+    let id = setInterval(function(){ 
+        $("#printedtimer").text("Time remaining: " + timer + " seconds");
+        timer--; //console.log(secs);
+        if(timer === -1){
+            clearInterval(id);
+            // alert('You' + '\'re' + ' out of time!');
+        $("#printedtimer").text("Sorry, you've run out of time!")
+        setTimeout(contentPrint, 3000);
+       }
+    }, 1000);
+}
+
+});
+
+// if (name === right)
 
 
     /*let answerDiv = $('<div>');
@@ -106,55 +147,6 @@ function showQuestions(){
     // }
 
 
-}
-// Start The Game //
-$(".st-btn").click(function() {
-    $(".st-btn").remove();
-    showQuestions();
-    //$("#questions").css('display', 'inherit');
-    startTimer();
-    
-    function startTimer() {
-        
-        var timer = 12;
-        var id = setInterval(function(){ 
-            $("#printedtimer").text("Time remaining: " + timer + " seconds");
-            timer--; //console.log(secs);
-            if(timer === 0){
-            clearInterval(id);
-            alert('You' + '\'re' + ' out of time!');
-           }
-        }, 1000);
-    }
-        // if (secs < 0) {
-        //     clearInterval(id);
-        //     document.getElementById("#printedtimer").innerHTML = "You're Out Of Time!";
-        //   }
-        // }
-        //DOM manipulation code to throw secs on screen would probably go here
-
-});
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Variables Outside Jquery start
 /*let allQuestions = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix];
 let questLength = allQuestions.length;
@@ -168,11 +160,6 @@ let intervalId;*/
     // function showQuestions = 
 // Game Starts
 // Timer 
-
-// //Functions
-// function correct() {
-//     let rightAnswer = $(this).data("correct");
-// if (rightAnswer === true)
 
 // }
 
