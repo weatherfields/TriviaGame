@@ -1,5 +1,10 @@
+// Pseudo Code ...
+
+// Make random question popup
+// 5 possible answers for question
+// Answers are logged into Right, Wrong, Unanswered as the game proceeds
+// After all questions are asked, the "total-screen" appears where the player sees how they did, and are given an option to restart.
 $(document).ready(function() {
-let questionSet = 0;
 // Questions 
 const questions=[{
     name:"questionOne",
@@ -58,6 +63,15 @@ const questions=[{
     right: "The Pixies"  
 }]
 
+let wins = 0;
+let losses = 0;
+let questionsAnswered = 0;
+let totalQuestionCount = questions.length;
+// You got {wins} amount of questions right out of {totalQuestionCount} total questions
+
+// Initiate correct answer variable
+var correctAnswer;
+// console.log('correct answer 1', correctAnswer)
 //render question on page dynamically
 
 
@@ -65,27 +79,59 @@ function showQuestions(){
 
     let rando = Math.floor(Math.random() * 5 + 1)
     
+    // Question logic
     let questionContainer = $('#questions');
     let questionDiv = $('<div>');
     questionDiv.attr('id', questions[rando].name);
-   
     questionDiv.text(questions[rando].prompt);
     questionContainer.append(questionDiv);
 
+    // Answer logic
+    correctAnswer = questions[rando].right;
+    // console.log('correct answer 2', correctAnswer)
+    const allAnswers = questions[rando].ansOptions;
+
+    for (let i = 0; i < allAnswers.length; i ++) {
+        let answerContainer = $('#allanswers');
+        let answerDiv = $('<div>');
+        answerDiv.attr('id', questions[rando].name);
+        answerDiv.text(questions[rando].ansOptions);
+        answerContainer.append(answerDiv);
+        // For each iteration, create an HTML element and assign its value to the iterated answer
+        // Create an onclick function for each answer
+        // Each onclick function should check if the answer is correct, and increment the losses/wins as needed, ALWAYS increment questionsAnswered by one
+        // We also want to call the showQuestions function when we click on an answer
+        // Doing this should generate a new question/answers
+        // Once the questionsAnswered variable is equal to the totalQuestionsCount, the game ends.
+
+        // render each answer here
+        // create element for each answer in the array
+        // set element value to the iterated value
+        // set click function for each answer
+        // when an answer clicked, compare that value to the correct answer
+        // ie-- if (allAnswers[i] === correctAnswer), user guessed correct answer
+        // if (allAnswers[i] !== correctAnswer), user guessed wrong answer
+        // When an answer is clicked, increment questionsAnswered variable
+        // Once questionsAnswered variable is equal to the totalQuestionsCount, stop the game
+        // After an answer is clicked, display a new question and its answers
+    }
 
 
-    const questionAnswers = $('#allanswers');
-    for (i = 0; i < 4; i++) {
-        const currentQuestion = $('<div>' + questions[questionSet].ansOptions[i] + '</div>');
+    // const questionAnswers = $('#allanswers');
+    // for (i = 0; i < 6; i++) {
+    //     const currentQuestion = $('<div>' + questions[questionSet].ansOptions[i] + '</div>');
 
-        // need to add class to take advantage of bootstrap
-        // currentQuestion.addClass('data-mask flex-center', i);
-        currentQuestion.addClass("questionCurrent");
-        currentQuestion.addClass("hoverdiv");
-        questionAnswers.append(currentQuestion);
+    //     currentQuestion.addClass("questionCurrent");
+    //     currentQuestion.addClass("hoverdiv");
+    //     questionAnswers.append(currentQuestion);
 
 
 }
+
+// function showAnswers() {
+//     // Check what question is asked so we can find the correct answer
+//     // Display all of the answers
+// }
 // Start The Game //
 $(".st-btn").click(function startGame() {
 
@@ -94,8 +140,6 @@ $(".st-btn").click(function startGame() {
     showQuestions();
     //$("#questions").css('display', 'inherit');
     $(".st-btn").remove();
-
-    
 });
 
 function startTimer() {
@@ -108,7 +152,7 @@ function startTimer() {
             clearInterval(id);
             // alert('You' + '\'re' + ' out of time!');
         $("#printedtimer").text("Sorry, you've run out of time!")
-        setTimeout(contentPrint, 3000);
+        
        }
     }, 1000);
 }
@@ -162,11 +206,3 @@ let intervalId;*/
 // Timer 
 
 // }
-
-
-// Pseudo Code ...
-
-// Make random question popup
-// 5 possible answers for question
-// Answers are logged into Right, Wrong, Unanswered as the game proceeds
-// After all questions are asked, the "total-screen" appears where the player sees how they did, and are given an option to restart.
