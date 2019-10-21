@@ -1,3 +1,0 @@
- let answerContainer = $('#allanswers');
-        let answerDiv = $('<div>');
-        answerDiv.attr('#allanswers', allAnswers);
