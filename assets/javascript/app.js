@@ -1,6 +1,7 @@
 // Pseudo Code ...
-// Make random question popup
-// 5 possible answers for question
+// Game opens to homescreen, with a start button and h1 header. When the start button is clicked, the game begins.
+// Make sequential question popup via manipulation of HTML through JQuery
+// 8 possible answers for question
 // Answers are logged into Right, Wrong, Unanswered as the game proceeds
 // After all questions are asked, the "total-screen" appears where the player sees how they did, and are given an option to restart. 
 $(document).ready(function () {
